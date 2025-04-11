@@ -1,0 +1,27 @@
+<?php
+/** op-module-boot:/template/rewrite.phtml
+ *
+ * @created   2016-11-25
+ * @moved     2025-04-11
+ * @version   1.0
+ * @package   op-module-bootstrap
+ * @author    Tomoaki Nagahara <tomoaki.nagahara@gmail.com>
+ * @copyright Tomoaki Nagahara All right reserved.
+ */
+?>
+<?php include('asset/boot/template/html_head.phtml') ?>
+		<div data-i18n="true" data-lang="en">
+		<?php
+		//	...
+		$name = strtolower(explode('/', $_SERVER['SERVER_SOFTWARE'])[0]);
+		$path = __DIR__."/rewrite-{$name}.phtml";
+
+		//	...
+		if( file_exists($path) ){
+			include($path);
+		}else{
+			echo "<p>Unknown web server. ($name)</p>";
+		}
+		?>
+		</div>
+<?php include('asset/boot/template/html_foot.phtml') ?>
